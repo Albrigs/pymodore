@@ -3,49 +3,69 @@ import sys
 from time import sleep
 from datetime import datetime
 from pygame import mixer
-from os import getcwd
+from termcolor import colored
 
 mixer.init(44100)
 
 sound = mixer.music
 sound.load("fx.mp3")
-timer = 25
+
+# edit this for
+cfg = {
+    'task': 25,
+    'rest': 5,
+    'big_rest': 30,
+    'max_rounds': 4
+}
+
+state = {
+    'cur': 'task',
+    'rounds': 0
+}
 
 def pomodoro():
+    global sound
+    global state
+    global cfg
 
-    global timer
     task = "🍅 None"
-    if timer == 25:
+    if state['cur'] == 'task':
+        state['rounds'] += 1
         task = "🍅 Begin:"+ datetime.now().strftime("%d/%m/%Y %H:%M:%S") + ' | ' + input('What is the current task?')
 
     input('Press ENTER to start the timer. 🍅')
-
     print("Seconds are bad ヽ(ಠ_ಠ)ノ")
-    for i in range(timer):
-        time_left = '\rMinutes Left: ' + str(timer -i)
+
+    for i in range(cfg[state['cur']]):
+        time_left = '\rMinutes Left: ' + str(cfg[state['cur']] -i)
 
         sys.stdout.write(time_left) #escrevendo
         sys.stdout.flush() #atualizando
-        sleep(60)
+        sleep(1)
 
-    global sound
+    # fim do timer
     for e in range(3):
         sound.play()
         sleep(1)
 
-    if timer == 25:
+    if state['cur'] == 'task':
         log = open('pymodore_log.txt', 'a')
         log.write('\n' + task)
         log.close()
+        if state['rounds'] == cfg['max_rounds']:
+            state['cur'] = 'big_rest'
+            message = "\nTime for a big rest! Press ENTER and take 30 mins! ('N' to quit)"
 
-        timer = 5
-        message = "\nStart rest? ('N' to quit)"
+        else:
+            state['cur'] = 'rest'
+            message = "\nStart rest? ('N' to quit)"
+
     else:
-        timer = 25
+        state['cur'] = 'task'
         message = "\nStart new task? ('N' to quit)"
 
-    progress = input(message)
 
+    progress = input(message)
     if progress.lower() == 'n' or progress.lower() == 'no':
         return print('Remember to check your log')
 
