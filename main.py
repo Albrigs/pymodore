@@ -34,7 +34,8 @@ def pomodoro():
         task = "🍅 Begin:"+ datetime.now().strftime("%d/%m/%Y %H:%M:%S") + ' | ' + input(colored('What is the current task?\n','green'))
 
     input('Press {0} to start the timer. {1}'.format(colored('ENTER','green'), colored('🍅', 'red')))
-    print("Seconds are bad "+ colored('ヽ(ಠ_ಠ)ノ', 'red')) if state['cur'] == 'task'
+    if state['cur'] == 'task':
+        print("Seconds are bad "+ colored('ヽ(ಠ_ಠ)ノ', 'red')) 
 
     for i in range(cfg[state['cur']]):
         time_left = '\rMinutes Left: ' + colored(str(cfg[state['cur']] -i),'blue')
