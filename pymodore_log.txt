@@ -1,3 +1,5 @@
 
 🍅 Begin:01/02/2020 22:51:55 | This is an log example
 🍅 Begin:01/02/2020 22:53:29 | Learn Python
+🍅 Begin:01/02/2020 22:56:17 | Super tester
+🍅 Begin:01/02/2020 22:57:31 | Hello world

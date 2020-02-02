@@ -5,7 +5,7 @@ from datetime import datetime
 from pygame import mixer
 from os import getcwd
 
-mixer.init()
+mixer.init(44100)
 
 sound = mixer.music
 sound.load("fx.mp3")
@@ -26,12 +26,12 @@ def pomodoro():
 
         sys.stdout.write(time_left) #escrevendo
         sys.stdout.flush() #atualizando
-        sleep(1)
+        sleep(60)
 
     global sound
-    for e in range(5):
+    for e in range(3):
         sound.play()
-        sleep(3)
+        sleep(1)
 
     if timer == 25:
         log = open('pymodore_log.txt', 'a')
