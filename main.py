@@ -3,10 +3,12 @@ import sys
 from time import sleep
 from datetime import datetime
 from pygame import mixer
-mixer.pre_init(44100, 16, 2, 4096)
+from os import getcwd
+
 mixer.init()
 
-sound = mixer.Sound("fx.mp3")
+sound = mixer.music
+sound.load("fx.mp3")
 timer = 25
 
 def pomodoro():
@@ -24,11 +26,12 @@ def pomodoro():
 
         sys.stdout.write(time_left) #escrevendo
         sys.stdout.flush() #atualizando
-        sleep(60)
+        sleep(1)
 
     global sound
-    for e in range(7):
+    for e in range(5):
         sound.play()
+        sleep(3)
 
     if timer == 25:
         log = open('pymodore_log.txt', 'a')
@@ -36,15 +39,15 @@ def pomodoro():
         log.close()
 
         timer = 5
-        message = "Start rest? ('N' to quit)"
+        message = "\nStart rest? ('N' to quit)"
     else:
         timer = 25
-        message = "Start new task? ('N' to quit)"
+        message = "\nStart new task? ('N' to quit)"
 
     progress = input(message)
 
     if progress.lower() == 'n' or progress.lower() == 'no':
-        return print('Remember to see your log')
+        return print('Remember to check your log')
 
     pomodoro()
 
