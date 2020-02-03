@@ -2,10 +2,10 @@
 from sys import stdout
 from time import sleep
 from datetime import datetime
-from pygame import mixer
 from termcolor import colored
 import click
 from os import getenv
+from vlc import MediaPlayer
 @click.command()
 
 #montagem de opções
@@ -16,10 +16,8 @@ from os import getenv
 
 
 def pomodoro(task, rest, bigrest, maxrounds):
-    mixer.init(44100)
-    sound = mixer.music
-    sound.load("fx.mp3")
 
+    sound = MediaPlayer("fx.mp3")
     state = {
         'cur': 'task',
         'rounds': 0
