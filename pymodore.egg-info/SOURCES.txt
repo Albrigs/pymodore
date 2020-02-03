@@ -1,0 +1,8 @@
+README.md
+pymodore.py
+setup.py
+pymodore.egg-info/PKG-INFO
+pymodore.egg-info/SOURCES.txt
+pymodore.egg-info/dependency_links.txt
+pymodore.egg-info/entry_points.txt
+pymodore.egg-info/top_level.txt

@@ -12,7 +12,7 @@ setup(
     description="",
     long_description=readfile('README.md'),
     author="Natan 'Albrigs' Fernandes dos Santos",
-    author_email="natanfernandessantos@protonmail.com",
+    author_email="natanfs013@gmail.com",
     url="",
     py_modules=['pymodore'],
     license=readfile('LICENSE'),
