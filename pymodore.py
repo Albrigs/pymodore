@@ -5,8 +5,10 @@ from datetime import datetime
 from pygame import mixer
 from termcolor import colored
 import click
-
+from os import getenv
 @click.command()
+
+#montagem de opções
 @click.option('--task', default=25, help='Time for tasks')
 @click.option('--rest', default=5, help='Time for small rests.')
 @click.option('--bigrest', default=30, help='Time for big rest.')
@@ -15,7 +17,6 @@ import click
 
 def pomodoro(task, rest, bigrest, maxrounds):
     mixer.init(44100)
-
     sound = mixer.music
     sound.load("fx.mp3")
 
@@ -31,10 +32,13 @@ def pomodoro(task, rest, bigrest, maxrounds):
         'max_rounds': maxrounds
     }
 
+    desktop = getenv('HOME')
+
     def loopomodore():
         nonlocal state
         nonlocal cfg
         nonlocal sound
+        nonlocal desktop
 
         task = "🍅 None"
         if state['cur'] == 'task':
@@ -54,13 +58,15 @@ def pomodoro(task, rest, bigrest, maxrounds):
             sleep(1)
 
         # fim do timer
-        for e in range(3):
+        for e in range(5):
             sound.play()
-            sleep(1)
+            sleep(0.5)
+            sound.stop()
 
         if state['cur'] == 'task':
-            log = open('pymodore_log.txt', 'a')
-            # log.write('\n' + task)
+            # criando log no desktop
+            log = open('{0}/pymodore_log.txt'.format(desktop), 'a')
+            log.write('\n' + task)
             log.close()
             if state['rounds'] == cfg['max_rounds']:
                 state['cur'] = 'big_rest'
@@ -77,7 +83,7 @@ def pomodoro(task, rest, bigrest, maxrounds):
         progress = input(message)
         if progress:
             if progress.strip().lower()[0] == 'n':
-                return print(colored('Remember to check your log', 'red'))
+                return print(colored('Remember to check your log in {0}'.format(desktop), 'red'))
         loopomodore()
 
     loopomodore()
