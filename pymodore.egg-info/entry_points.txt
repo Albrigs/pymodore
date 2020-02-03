@@ -1,3 +1,4 @@
-[console_scripts]
-pymodore = pymodore:pomodoro
 
+        [console_scripts]
+        pymodore=pymodore:pomodoro
+    

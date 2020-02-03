@@ -1,24 +1,23 @@
 from setuptools import setup
 
-
-def readfile(filename):
-    with open(filename, 'r+') as f:
-        return f.read()
-
-
 setup(
     name="pymodore",
-    version="2020.2.2",
-    description="",
-    long_description=readfile('README.md'),
+    version="1.0.0",
     author="Natan 'Albrigs' Fernandes dos Santos",
     author_email="natanfs013@gmail.com",
-    url="",
     py_modules=['pymodore'],
-    license=readfile('LICENSE'),
-    entry_points={
-        'console_scripts': [
-            'pymodore = pymodore:pomodoro'
-        ]
-    },
+    description='A simple terminal pomodore timer.',
+    url='https://github.com/NatanFernandesSantos/pymodore',
+    license='GNU 3.0',
+    keywords=['pomodoro','console','profit', 'command', 'line', 'timer'],
+    install_requires=[
+        'Click',
+        'termcolor',
+        'python-vlc',
+    ],
+    entry_points='''
+        [console_scripts]
+        pymodore=pymodore:pomodoro
+    ''',
+
 )
