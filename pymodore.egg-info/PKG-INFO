@@ -1,6 +1,6 @@
-Metadata-Version: 1.0
+Metadata-Version: 1.2
 Name: pymodore
-Version: 1.0.0
+Version: 1.0.5
 Summary: A simple terminal pomodore timer.
 Home-page: https://github.com/NatanFernandesSantos/pymodore
 Author: Natan 'Albrigs' Fernandes dos Santos
@@ -9,3 +9,7 @@ License: GNU 3.0
 Description: UNKNOWN
 Keywords: pomodoro,console,profit,command,line,timer
 Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Python: >=3

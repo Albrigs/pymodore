@@ -17,8 +17,8 @@ from vlc import MediaPlayer
 @click.option('--bigrest', default=30, help='Time for big rest.')
 @click.option('--maxrounds', default=4, help='Number of tasks before a big rest.')
 
-
 def pomodoro(task, rest, bigrest, maxrounds):
+
     system('cls' if name == 'nt' else 'clear')
     sound = MediaPlayer("fx.mp3")
     state = {

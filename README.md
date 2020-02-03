@@ -1,5 +1,12 @@
 # pymodore
+
 Simple pomodore to run in terminal with sound.
+
+Install this module with:
+
+```
+pip3 install pymodore
+```
 
 A example of log generated from this script:
 ```
