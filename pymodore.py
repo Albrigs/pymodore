@@ -5,9 +5,9 @@ from time import sleep, time
 from datetime import datetime
 from termcolor import colored
 import click
-from os import getenv, system, name
+from os import getenv, system, name, path, remove
 from vlc import MediaPlayer
-
+from gtts import gTTS
 
 @click.command()
 
@@ -19,8 +19,18 @@ from vlc import MediaPlayer
 
 def pomodoro(task, rest, bigrest, maxrounds):
 
+    try:
+        speech = gTTS(text = 'tá', lang = 'pt-br', slow = False)
+        speech.save("fx.mp3")
+    except:
+        print('Will run without sound')
+
     system('cls' if name == 'nt' else 'clear')
-    sound = MediaPlayer("fx.mp3")
+
+    sound = None
+    if path.isfile('fx.mp3'):
+        sound = MediaPlayer("fx.mp3")
+
     state = {
         'cur': 'task',
         'rounds': 0
@@ -92,6 +102,7 @@ def pomodoro(task, rest, bigrest, maxrounds):
             willcontinue = input(message)
             if willcontinue:
                 if willcontinue.strip().lower()[0] == 'n':
+                    if path.isfile('fx.mp3'): remove('fx.mp3')
                     return print(colored('Remember to check your log in {0}'.format(log_folder), 'red'))
             loopomodore()
 
@@ -122,10 +133,11 @@ def pomodoro(task, rest, bigrest, maxrounds):
                 sleep(CICLE_SIZE)
 
         # fim do timer
-        for e in range(5):
-            sound.play()
-            sleep(0.5)
-            sound.stop()
+        if sound:
+            for e in range(5):
+                sound.play()
+                sleep(0.5)
+                sound.stop()
 
 
         selection_screen(0)

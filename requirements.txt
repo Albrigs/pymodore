@@ -1,3 +1,4 @@
-click==7.0
+Click==7.0
+python_vlc==3.0.7110
 termcolor==1.1.0
-python-vlc==3.0.7110
+gtts==2.1.1

@@ -19,6 +19,7 @@ setup(
         'Click',
         'termcolor',
         'python-vlc',
+        'gtts'
     ],
     entry_points='''
         [console_scripts]
