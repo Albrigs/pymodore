@@ -2,11 +2,11 @@ from setuptools import setup
 from sys import version_info
 
 if version_info.major < 3:
-    raise RuntimeError("please install this with: pip3 install pymodore")
+    raise Exception("Please install this with: pip3 install pymodore")
 
 setup(
     name="pymodore",
-    version="1.0.5",
+    version="1.1.0",
     author="Natan 'Albrigs' Fernandes dos Santos",
     author_email="natanfs013@gmail.com",
     py_modules=['pymodore'],

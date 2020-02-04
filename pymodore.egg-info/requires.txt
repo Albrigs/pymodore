@@ -1,3 +1,4 @@
 Click
 termcolor
 python-vlc
+gtts
