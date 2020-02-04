@@ -114,7 +114,15 @@ def pomodoro(task, rest, bigrest, maxrounds):
         #loop de atividade
         for i in range(cfg[state['cur']]):
             CICLE_SIZE = 60
-            time_left = '\rMinutes Left: ' + colored(str(cfg[state['cur']] -i),'blue')
+
+            cur_time = ''
+
+            if cfg[state['cur']] -i < 10:
+                cur_time = '0'+ str(cfg[state['cur']] -i)
+            else:
+                cur_time = str(cfg[state['cur']] -i)
+
+            time_left = '\rMinutes Left: ' + colored(cur_time,'blue')
 
             stdout.write(time_left) #escrevendo
 

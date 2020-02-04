@@ -6,7 +6,7 @@ if version_info.major < 3:
 
 setup(
     name="pymodore",
-    version="1.1.0",
+    version="1.1.1",
     author="Natan 'Albrigs' Fernandes dos Santos",
     author_email="natanfs013@gmail.com",
     py_modules=['pymodore'],
